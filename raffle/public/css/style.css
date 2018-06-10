@@ -1,0 +1,9 @@
+.red-header {
+    background-color: #B52C2C;
+    color: #F8F9FA;
+    font-weight: bold;
+}
+
+.bg-darker {
+    background-color: rgba(0, 0, 0, 0.9);
+}
