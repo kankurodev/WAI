@@ -12,7 +12,7 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> Raffle</a>
+                        <a class="nav-link" href="{{ route('raffle') }}"> Raffle</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"> New Ticket</a>

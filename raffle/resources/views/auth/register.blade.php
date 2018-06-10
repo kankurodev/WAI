@@ -4,10 +4,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card border-dark">
-                <div class="card-header red-header">Register</div>
+            {{-- Extend the card component --}}
+            @component('components.card')
 
-                <div class="card-body bg-dark text-light">
+                {{-- Assign the card's title --}}
+                @slot('cardTitle')
+                    Register
+                @endslot
+
+                {{-- Assign the card's body --}}
+                @slot('cardBody')
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
@@ -67,8 +73,8 @@
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
+                @endslot
+            @endcomponent
         </div>
     </div>
 </div>

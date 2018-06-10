@@ -4,10 +4,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card border-dark">
-                <div class="card-header red-header">Login</div>
 
-                <div class="card-body bg-dark text-light">
+            {{-- Extend the card component --}}
+            @component('components.card')
+                {{-- Assign the card's title --}}
+                @slot('cardTitle')
+                    Login
+                @endslot
+
+                {{-- Assign the card's body --}}
+                @slot('cardBody')
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -19,8 +25,8 @@
 
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
@@ -33,8 +39,8 @@
 
                                 @if ($errors->has('password'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
@@ -57,8 +63,8 @@
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
+                @endslot
+            @endcomponent
         </div>
     </div>
 </div>

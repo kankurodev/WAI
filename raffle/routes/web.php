@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('pages.welcome');
 });
+Route::get('/raffle', function () {
+    return view('pages.raffle');
+})->name('raffle');
 
 Auth::routes();
 
