@@ -15,10 +15,13 @@
                         <a class="nav-link" href="{{ route('raffle') }}"> Raffle</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> New Ticket</a>
+                        <a class="nav-link" href="{{ route('addTicket') }}"> New Ticket</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> Winners</a>
+                        <a class="nav-link" href="{{ route('entrants') }}"> Entrants</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('winners') }}"> Winners</a>
                     </li>
                 </ul>
             @endif

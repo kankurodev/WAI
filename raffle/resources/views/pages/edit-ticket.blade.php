@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Add Ticket | Raffler')
+@section('title', 'Edit Ticket | Raffler')
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -9,7 +9,7 @@
 
                     {{-- Assign the card's title --}}
                     @slot('cardTitle')
-                        Add New Ticket
+                        Edit Ticket
                     @endslot
 
                     {{-- Assign the card's body --}}
@@ -56,7 +56,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success mt-4">Add Ticket</button>
+                            <button type="submit" class="btn btn-primary mt-4">Edit Ticket</button>
                         </form>
 
                     @endslot

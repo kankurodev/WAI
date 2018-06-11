@@ -14,9 +14,22 @@
 Route::get('/', function () {
     return view('pages.welcome');
 });
+
 Route::get('/raffle', function () {
     return view('pages.raffle');
-})->name('raffle');
+})->middleware('auth')->name('raffle');
+
+Route::get('/raffle/add', function () {
+    return view('pages.add-ticket');
+})->middleware('auth')->name('addTicket');
+
+Route::get('/entrants', function () {
+    return view('pages.entrants');
+})->middleware('auth')->name('entrants');
+
+Route::get('/winners', function () {
+    return view('pages.raffle-winners');
+})->middleware('auth')->name('winners');
 
 Auth::routes();
 
