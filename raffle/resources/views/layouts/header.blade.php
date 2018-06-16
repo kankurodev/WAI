@@ -12,16 +12,16 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('raffle') }}"> Raffle</a>
+                        <a class="nav-link {{ Request::is('raffle') ? 'active': '' }}" href="{{ route('raffle') }}"> Raffle</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('addTicket') }}"> New Ticket</a>
+                        <a class="nav-link {{ Request::is('raffle/add') ? 'active': '' }}" href="{{ route('addTicket') }}"> New Ticket</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('entrants') }}"> Entrants</a>
+                        <a class="nav-link {{ Request::is('entrants') ? 'active': '' }}" href="{{ route('entrants') }}"> Entrants</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('winners') }}"> Winners</a>
+                        <a class="nav-link {{ Request::is('winners') ? 'active': '' }}" href="{{ route('winners') }}"> Winners</a>
                     </li>
                 </ul>
             @endif
