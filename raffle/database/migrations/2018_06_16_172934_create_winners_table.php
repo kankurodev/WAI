@@ -16,15 +16,13 @@ class CreateWinnersTable extends Migration
         Schema::create('winners', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('entrant');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('phone')->nullable();
             $table->string('gender');
             $table->integer('age');
             $table->string('status');
             $table->timestamps();
 
-            //Create foreign key for matching emails
-            $table->foreign('email')->references('email')->on('entrants');
         });
     }
 

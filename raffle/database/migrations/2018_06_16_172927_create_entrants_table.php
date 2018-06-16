@@ -16,7 +16,7 @@ class CreateEntrantsTable extends Migration
         Schema::create('entrants', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('entrant');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('phone')->nullable();
             $table->string('gender');
             $table->integer('age');
