@@ -7,27 +7,37 @@ use Illuminate\Http\Request;
 class RaffleController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        return view('pages.raffle');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new ticket.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('pages.add-ticket');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created ticket in the raffle.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -38,7 +48,7 @@ class RaffleController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified ticket.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -49,7 +59,7 @@ class RaffleController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified ticket.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -60,7 +70,7 @@ class RaffleController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified ticket in the raffle.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -72,7 +82,7 @@ class RaffleController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified ticket from the raffle.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -80,5 +90,25 @@ class RaffleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Display a listing of the raffle entrants.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function entrants() {
+
+        return view('pages.entrants');
+    }
+
+    /**
+     * Display a listing of the raffle entrants.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function winners() {
+
+        return view('pages.raffle-winners');
     }
 }

@@ -11,26 +11,21 @@
 |
 */
 
+//Create landing page route
 Route::get('/', function () {
     return view('pages.welcome');
 });
 
-Route::get('/raffle', function () {
-    return view('pages.raffle');
-})->middleware('auth')->name('raffle');
-
-Route::get('/raffle/add', function () {
-    return view('pages.add-ticket');
-})->middleware('auth')->name('addTicket');
-
-Route::get('/entrants', function () {
-    return view('pages.entrants');
-})->middleware('auth')->name('entrants');
-
-Route::get('/winners', function () {
-    return view('pages.raffle-winners');
-})->middleware('auth')->name('winners');
-
+//Create authorization routes
 Auth::routes();
 
+//Create custom routes
+Route::get('/raffle', 'RaffleController@index')->name('raffle');
+Route::get('/raffle/entrants', 'RaffleController@entrants')->name('raffle.entrants');
+Route::get('/raffle/winners', 'RaffleController@winners')->name('raffle.winners');
+
+//Create CRUD resource routes
+Route::resource('raffle','RaffleController');
+
+//Create home route
 Route::get('/home', 'HomeController@index')->name('home');
