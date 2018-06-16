@@ -98,7 +98,7 @@ class RaffleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function entrants() {
-
+        
         return view('pages.entrants');
     }
 
