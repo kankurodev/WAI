@@ -49,7 +49,7 @@ class RaffleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -104,16 +104,24 @@ class RaffleController extends Controller
      */
     public function entrants() {
 
-        return view('pages.entrants');
+        //Select all the data from the Entrant model and paginate it by 20
+        $entrants = Entrant::paginate(20);
+
+        //Return the view and pass in the entrants data
+        return view('pages.entrants', compact('entrants'));
     }
 
     /**
-     * Display a listing of the raffle entrants.
+     * Display a listing of the past raffle winners.
      *
      * @return \Illuminate\Http\Response
      */
     public function winners() {
 
-        return view('pages.raffle-winners');
+        //Select all the data from the Winner model and paginate it by 10
+        $pastWinners = Winner::paginate(10);
+
+        //Return the view and pass in the pastWinners data
+        return view('pages.raffle-winners', compact('pastWinners'));
     }
 }

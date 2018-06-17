@@ -15,25 +15,38 @@
                     {{-- Assign the card's body --}}
                     @slot('cardBody')
 
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-dark rounded table-hover">
-                                <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Entrants</th>
-                                    <th scope="col">Tickets</th>
-                                </tr>
-                                </thead>
-                                <tbody>
+                        <section class="bd-dark rounded">
+                            <h1 class="text-center mb-1 text-light">Entrants</h1>
+                            <p class="text-center mb-5 text-muted">Use scroll bar or swipe to view full table on smaller screens</p>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-dark rounded table-hover">
+                                    <thead>
                                     <tr>
-                                        <th scope="col">1</th>
-                                        <td>John Smith</td>
-                                        <td>9</td>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Entrants</th>
+                                        <th scope="col">Tickets</th>
                                     </tr>
-                                </tbody>
-                            </table>
-                            {{-- $traders->links() --}}
-                        </div>
+                                    </thead>
+                                    <tbody>
+                                        @isset($entrants)
+                                            @foreach($entrants as $entrant)
+                                                <tr>
+                                                    <th scope="col">{{ $entrant['id'] }}</th>
+                                                    <td>{{ $entrant['entrant'] }}</td>
+                                                    <td>{{ $entrant['tickets'] }}</td>
+                                                </tr>
+                                            @endforeach
+                                        @endisset
+                                    </tbody>
+                                </table>
+                                @isset($entrants)
+                                    @if($entrants->total() > 0)
+                                        <p class="text-warning mb-1 mt-5">Showing {{ $entrants->count() }} results of {{ $entrants->total() }}</p>
+                                    @endif
+                                        <p class="my-1">{{ $entrants->links() }}</p>
+                                @endisset
+                            </div>
+                        </section>
 
                     @endslot
                 @endcomponent

@@ -8,7 +8,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 {{-- Extend the card component --}}
                 @component('components.card')
 
@@ -36,7 +36,7 @@
                                 <dd>Absolutely free! Raffler is and will always be free, though extra features may be added in the future for upgraded user accounts.</dd>
                                 <hr>
                                 <dt>Can I have multiple raffles?</dt>
-                                <dd>Yes! Raffler gives its' users the ability to create multiple raffles which can also be edited and reuse as needed!</dd>
+                                <dd>Unfortunantly not at the moment, no. This is something we are looking to allow in the future though!</dd>
                             </dl>
                         </article>
 
