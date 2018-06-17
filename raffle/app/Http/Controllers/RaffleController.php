@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Ticket;
+use App\Entrant;
+use App\Winner;
 
 class RaffleController extends Controller
 {
@@ -23,7 +26,9 @@ class RaffleController extends Controller
      */
     public function index()
     {
-        return view('pages.raffle');
+        $tickets = Ticket::paginate(20);
+
+        return view('pages.raffle', compact('tickets'));
     }
 
     /**
@@ -98,7 +103,7 @@ class RaffleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function entrants() {
-        
+
         return view('pages.entrants');
     }
 

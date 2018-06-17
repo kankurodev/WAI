@@ -43,3 +43,30 @@ dd::before {
     height: 25px;
     width: 25px;
 }
+
+/*PAGINATION STYLING*/
+
+.page-link, .page-item ~ .disabled .page-link {
+    color: #dc3545 !important;
+    background-color: #212529 !important;
+    border-color: #32383e !important;
+}
+
+.page-link:hover {
+    color: #B52C39 !important;
+    background-color: hsla(0,0%,100%,.05) !important;
+    border-color: #32383e !important;
+}
+
+.page-item.active .page-link {
+    background-color: #dc3545 !important;
+    color: #ffffff !important;
+}
+
+.disabled {
+    cursor: not-allowed;
+}
+
+li.disabled .page-link, .page-item + .disabled .page-link {
+    color: hsla(0,0%,100%,.5) !important;
+}
