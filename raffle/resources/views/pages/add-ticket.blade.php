@@ -4,6 +4,16 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+                @if(Session::has('ticket-added'))
+
+                    <div class="container mt-1 mb-5 alert alert-success alert-dismissible fade show text-center" role="alert">
+                        <button type="button" class="close pt-2" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <p>{{ session('ticket-added') }}</p>
+                        <span>{{ session('entrant') }}'s current ticket count is now {{ session('ticket-count') }}!</span>
+                    </div>
+
+                @endif
+
                 {{-- Extend the card component --}}
                 @component('components.card')
 
@@ -15,12 +25,12 @@
                     {{-- Assign the card's body --}}
                     @slot('cardBody')
 
-                        <form method="post" action="#" enctype="multipart/form-data">
+                        <form method="post" action="{{url('raffle')}}" enctype="multipart/form-data">
                             @csrf
                             <div class="form-row">
                                 <div class="form-group col-lg-4">
-                                    <label class="text-light" class="text-light" for="name">Name</label>
-                                    <input class="form-control" type="text" name="name" id="name" placeholder="John Doe" required>
+                                    <label class="text-light" class="text-light" for="entrant">Name</label>
+                                    <input class="form-control" type="text" name="entrant" id="entrant" placeholder="John Doe" required>
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label class="text-light" for="email">Email</label>
