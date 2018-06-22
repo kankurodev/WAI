@@ -19,16 +19,16 @@
                             @csrf
                             <div class="form-row">
                                 <div class="form-group col-lg-4">
-                                    <label class="text-light" class="text-light" for="name">Name</label>
-                                    <input class="form-control" type="text" name="name" id="name" placeholder="John Doe" required>
+                                    <label class="text-light" class="text-light" for="entrant">Name</label>
+                                    <input class="form-control" type="text" name="entrant" id="entrant" value="{{ $ticket->entrant }}" required>
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label class="text-light" for="email">Email</label>
-                                    <input class="form-control" type="email" name="email" id="email" placeholder="example@example.com" required>
+                                    <input class="form-control" type="email" name="email" id="email" value="{{ $ticket->email }}" required>
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label class="text-light" for="game">Phone</label>
-                                    <input class="form-control" type="text" name="phone" id="phone" placeholder="1231231234" required>
+                                    <input class="form-control" type="text" name="phone" id="phone" value="{{ $ticket->phone }}" required>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -36,23 +36,23 @@
                                     <label class="text-light" for="gender">Gender</label>
                                     <select class="form-control" name="gender" id="gender" required>
                                         <option value="">Choose...</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                        <option value="Other">Other</option>
+                                        <option @if($ticket->gender=="male") selected @endif value="Male">Male</option>
+                                        <option @if($ticket->gender=="female") selected @endif value="Female">Female</option>
+                                        <option @if($ticket->gender=="other") selected @endif value="Other">Other</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label class="text-light" for="age">Age</label>
-                                    <input class="form-control" type="number" name="age" id="age" placeholder="27" required>
+                                    <input class="form-control" type="number" name="age" id="age" value="{{ $ticket->age }}" required>
                                 </div>
                                 <div class="form-group col-lg-4">
                                     <label class="text-light" for="status">Ticket Status</label>
                                     <select class="form-control" name="status" id="status" required>
                                         <option value="">Choose...</option>
-                                        <option value="In Queue">In Queue</option>
-                                        <option value="Approved">Approved</option>
-                                        <option value="Denied">Denied</option>
-                                        <option value="Canceled">Canceled</option>
+                                        <option @if($ticket->status=="In Queue") selected @endif value="In Queue">In Queue</option>
+                                        <option @if($ticket->status=="Approved") selected @endif value="Approved">Approved</option>
+                                        <option @if($ticket->status=="Denied") selected @endif value="Denied">Denied</option>
+                                        <option @if($ticket->status=="Canceled") selected @endif value="Canceled">Canceled</option>
                                     </select>
                                 </div>
                             </div>

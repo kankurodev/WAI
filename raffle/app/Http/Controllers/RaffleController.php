@@ -128,7 +128,11 @@ class RaffleController extends Controller
      */
     public function edit($id)
     {
-        //
+        //Select the ticket that matches the id
+        $ticket = Ticket::find($id);
+
+        //Display the edit form and pass in the ticket and id
+        return view('pages.edit-ticket', compact('ticket', 'id'));
     }
 
     /**
@@ -151,7 +155,31 @@ class RaffleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //Select the ticket from the database using the id passed in
+        $ticket = DB::table('raffle')->where('id', $id);
+
+        //Select the entrant from the database using the id passed in
+        $entrant = DB::table('raffle')->where('id', $id)->value('email');
+
+        //Delete the selected ticket
+        $ticket->delete();
+
+        //Select the tickets column from the entrants table to be updated
+        $tickets = DB::table('entrants')->where('email', $entrant)->value('tickets');
+
+        //Check the value of the tickets column
+        if ($tickets > 1) {
+
+            //If the value is more than 1 then subtract 1
+            DB::table('entrants')->where('email', $entrant)->update(['tickets' => $tickets -1]);
+        } else {
+
+            //If the value isn't more than 1 then delete the entrant
+            DB::table('entrants')->where('email', $entrant)->delete();
+        }
+
+        //Redirect the user back to the raffle page
+        return redirect('/raffle');
     }
 
     /**

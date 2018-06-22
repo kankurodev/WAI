@@ -45,8 +45,15 @@
                                                 <td>{{ $ticket['age'] }} </td>
                                                 <td>{{ $ticket['status'] }} </td>
                                                 <td class="text-center" style="width: 1%; white-space: nowrap;">
-                                                    <a href="#" class="btn btn-sm btn-warning py-0 px-1" >Edit</a>
-                                                    <a href="#" class="btn btn-sm btn-danger py-0 px-1" >Delete</a>
+                                                    <form method="get" action="{{action('RaffleController@edit', $ticket['id'])}}" class="d-inline">
+                                                        @csrf
+                                                        <button type="submit" class="btn btn-sm btn-warning py-0 px-1" >Edit</button>
+                                                    </form>
+                                                    <form method="post" action="{{action('RaffleController@destroy', $ticket['id'])}}" class="d-inline">
+                                                        @csrf
+                                                        <input name="_method" type="hidden" value="DELETE">
+                                                        <button type="submit" class="btn btn-sm btn-danger py-0 px-1">Delete</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
