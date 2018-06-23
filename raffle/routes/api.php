@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Get the index from the controller to display the data
+Route::get('entrants', 'EntrantsAPIController@index');
