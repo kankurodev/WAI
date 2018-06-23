@@ -6,6 +6,23 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
+
+                @if(Session::has('ticket-updated'))
+
+                    <div class="container mt-1 mb-5 alert alert-success alert-dismissible fade show text-center" role="alert">
+                        <button type="button" class="close pt-2" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span>{{ session('ticket-updated') }}</span>
+                    </div>
+
+                @elseif(Session::has('ticket-deleted'))
+
+                    <div class="container mt-1 mb-5 alert alert-success alert-dismissible fade show text-center" role="alert">
+                        <button type="button" class="close pt-2" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span>{{ session('ticket-deleted') }}</span>
+                    </div>
+
+                @endif
+
                 {{-- Extend the card component --}}
                 @component('components.card')
 

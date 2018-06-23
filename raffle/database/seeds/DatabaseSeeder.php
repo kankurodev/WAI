@@ -25,13 +25,13 @@ class DatabaseSeeder extends Seeder
             $genderNum = rand(1, 3);
             switch ($genderNum) {
                 case 1:
-                    $gender = 'male';
+                    $gender = 'Male';
                     break;
                 case 2:
-                    $gender = 'female';
+                    $gender = 'Female';
                     break;
                 case 3:
-                    $gender = 'other';
+                    $gender = 'Other';
                     break;
             }
 

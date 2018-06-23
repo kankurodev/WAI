@@ -9,7 +9,7 @@
                     <div class="container mt-1 mb-5 alert alert-success alert-dismissible fade show text-center" role="alert">
                         <button type="button" class="close pt-2" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <p>{{ session('ticket-added') }}</p>
-                        <span>{{ session('entrant') }}'s current ticket count is now {{ session('ticket-count') }}!</span>
+                        <span>{{ session('entrant') }}'s current ticket count is now @if(is_null(session('ticket-count'))) 1 @else {{ session('ticket-count') }} @endif!</span>
                     </div>
 
                 @endif

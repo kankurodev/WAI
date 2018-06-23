@@ -15,8 +15,9 @@
                     {{-- Assign the card's body --}}
                     @slot('cardBody')
 
-                        <form method="post" action="#" enctype="multipart/form-data">
+                        <form method="post" action="{{ action('RaffleController@update', $id) }}" enctype="multipart/form-data">
                             @csrf
+                            <input name="_method" type="hidden" value="PATCH">
                             <div class="form-row">
                                 <div class="form-group col-lg-4">
                                     <label class="text-light" class="text-light" for="entrant">Name</label>
@@ -36,9 +37,9 @@
                                     <label class="text-light" for="gender">Gender</label>
                                     <select class="form-control" name="gender" id="gender" required>
                                         <option value="">Choose...</option>
-                                        <option @if($ticket->gender=="male") selected @endif value="Male">Male</option>
-                                        <option @if($ticket->gender=="female") selected @endif value="Female">Female</option>
-                                        <option @if($ticket->gender=="other") selected @endif value="Other">Other</option>
+                                        <option @if($ticket->gender=="Male") selected @endif value="Male">Male</option>
+                                        <option @if($ticket->gender=="Female") selected @endif value="Female">Female</option>
+                                        <option @if($ticket->gender=="Other") selected @endif value="Other">Other</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-lg-4">

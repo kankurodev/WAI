@@ -81,7 +81,7 @@ class RaffleController extends Controller
             $entrant->phone = $formPhone;
             $entrant->gender = $formGender;
             $entrant->age = $formAge;
-            $entrant->tickets = DB::table('entrants')->where('entrant', $formEntrant)->value('tickets') +1;
+            $entrant->tickets = DB::table('entrants')->where('email', $formEmail)->value('tickets') +1;
             $entrant->save();
         }
 
@@ -144,7 +144,25 @@ class RaffleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Select the ticket that matches the id
+        $ticket = Ticket::find($id);
+
+        //Update the ticket's values with the form data
+        $ticket->entrant = $request->get('entrant');
+        $ticket->email = $request->get('email');
+        $ticket->phone = $request->get('phone');
+        $ticket->gender = $request->get('gender');
+        $ticket->age = $request->get('age');
+        $ticket->status = $request->get('status');
+
+        //Save the ticket's new values
+        $ticket->save();
+
+        //Create a session variable to alert the user that the ticket was updated
+        Session::flash('ticket-updated', 'The ticket was successfully updated!');
+
+        //Redirect the user to the raffle
+        return redirect('raffle');
     }
 
     /**
@@ -178,8 +196,11 @@ class RaffleController extends Controller
             DB::table('entrants')->where('email', $entrant)->delete();
         }
 
+        //Create a session variable to alert the user that the ticket was deleted
+        Session::flash('ticket-deleted', 'The ticket was successfully deleted!');
+
         //Redirect the user back to the raffle page
-        return redirect('/raffle');
+        return redirect('raffle');
     }
 
     /**
